@@ -1,0 +1,12 @@
+GET http://localhost:9700/v1/simple
+
+GET http://localhost:8082/v1/simple
+
+
+GET http://localhost/v1/simple
+
+
+GET http://dev.simple-api.127.0.0.1.sslip.io/v1/simple
+
+
+GET http://dev.simple-api.127.0.0.1.sslip.io:9701/v1/simple
