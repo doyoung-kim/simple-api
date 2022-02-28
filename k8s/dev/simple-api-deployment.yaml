@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: simple-api
-        image: skaqud/simple-api  # on server
+        image: madyoung77/simple-api  # on server
         # image: simple-api
         ports: 
         - name: http
