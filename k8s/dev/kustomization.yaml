@@ -4,5 +4,5 @@ resources:
 - simple-api-deployment.yaml
 - ingress.yaml
 images:
-- name: madyoung77/simple-api
-  newTag: RB0.0.3
+- name: oscka/simple-api
+  newTag: 0.0.7

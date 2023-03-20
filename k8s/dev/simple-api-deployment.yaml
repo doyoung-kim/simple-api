@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: simple-api
-        image: madyoung77/simple-api  # on server
+        image: oscka/simple-api  # on server
         # image: simple-api
         ports: 
         - name: http
@@ -29,12 +29,9 @@ metadata:
   name: simple-api-service
   namespace: api
 spec:
-  # type: NodePort
+  type: NodePort
   selector:
     app: simple-api
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: http
-      # nodePort: 32180
----
+    - port: 80
+      targetPort: 80

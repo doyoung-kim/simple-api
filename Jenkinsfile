@@ -1,7 +1,7 @@
 def PROJECT_NAME = "simple-api"
-def gitUrl = "https://github.com/madyoung77/${PROJECT_NAME}.git"
+def gitUrl = "https://github.com/oscka/${PROJECT_NAME}.git"
 def imgRegistry = "https://registry.hub.docker.com"
-def gitOpsUrl = "github.com/madyoung77/simple-gitops.git"
+def gitOpsUrl = "https://github.com/oscka/simple-gitops.git"
 def opsBranch = "main"
 /////////////////////////////
 pipeline {
@@ -23,7 +23,7 @@ pipeline {
                         sh "skaffold build -p dev -t ${TAG}"
                     }
                     // mac local 일때만 사용 linux 환경에서는 docker.withRegistry 사용
-                    sh "skaffold build -p dev -t ${TAG}"
+                    // sh "skaffold build -p dev -t ${TAG}"
                 }
             }
         }
@@ -35,20 +35,22 @@ pipeline {
         stage('GitOps update') {
             steps{
                 print "======kustomization.yaml tag update====="
-                git url: "https://${gitOpsUrl}", branch: "main" , credentialsId: "git-credential"
-                script{
-                    sh """
-                        cd ./simple-api/blue-green
-                        kustomize edit set image madyoung77/simple-api:${TAG}
+                                    withCredentials([
+                        gitUsernamePassword(credentialsId: 'git-credential', gitToolName: 'Default')
+                    ]) {
+                        sh """
+                        git clone ${gitOpsUrl}
+                        cd ./simple-gitops/simple-api/rolling-update-no-istio
+                        kustomize edit set image oscka/simple-api:${TAG}
                         # 로컬외에는 주석 제거한다
                         git config --global user.email "admin@demo.com"
                         git config --global user.name "admin"
                         git add .
                         git commit -am 'update image tag ${TAG}'
-                        git remote set-url --push origin https://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@${gitOpsUrl}
+                        git remote set-url --push origin ${gitOpsUrl}
                         git push origin ${opsBranch}
-                    """
-                 }
+                        """
+                    }
                 print "git push finished !!!"
             }
         }

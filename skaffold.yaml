@@ -6,17 +6,16 @@ profiles:
       local:
         push: true # false는 로컬 테스트
       artifacts:
-        - image: madyoung77/simple-api # on dev server
+        - image: oscka/simple-api # on dev server
         # - image: simple-api   # local
           jib:
             args:
               - -DskipTests
               - "-Djib.container.environment=SPRING_PROFILES_ACTIVE=dev"
-            fromImage: openjdk:11.0.11-jre-slim
+            fromImage: eclipse-temurin:17.0.2_8-jre
     deploy:
       kubectl:
         manifests:
-          - k8s/dev/ingress.yaml
           - k8s/dev/simple-api-*.yaml 
     # portForward:
     # - resourceType: Service
