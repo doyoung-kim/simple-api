@@ -17,6 +17,3 @@ spec:
             name: simple-api-svc
             port:
               number: 8080
-
-
-              
