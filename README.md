@@ -27,6 +27,7 @@ helm upgrade --install ingress-nginx ingress-nginx/ingress-nginx --namespace ing
 ```
 
 5. 포트포워딩
+* 위에서 Helm Ngix Ingress 설치 시에는 포트포워딩이 필요는 없다. 단지 참고만 해라
 ```
 kubectl port-forward svc/simple-api-svc 8082:8080 -n api
 ```
