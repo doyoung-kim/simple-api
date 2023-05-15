@@ -1,6 +1,9 @@
 #############
 ### 공통 
 ##############
+server:  
+  tomcat:
+    uri-encoding: UTF-8  
 
 spring:
   application:
