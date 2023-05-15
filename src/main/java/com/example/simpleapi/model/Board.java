@@ -1,12 +1,10 @@
 package com.example.simpleapi.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import lombok.Data;
+
+import java.time.LocalDateTime;
 
 @Data
 @Entity
@@ -27,7 +25,7 @@ public class Board {
 	private String writeName;
 	
 	@Column(name = "write_date")
-	private LocalDateTime writeDate;	 
+	private LocalDateTime writeDate;
 	
 	@Column(name = "modify_name")
 	private String modifyName;
