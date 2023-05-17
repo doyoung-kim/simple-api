@@ -8,7 +8,7 @@ server:
 spring:
   datasource:    
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://10.133.62.254:3306/samp?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&useUnicode
+    url: jdbc:mysql://192.168.0.92:3306/samp?autoReconnect=true&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul&useUnicode
     username: root
     password: admin
     hikari: 
