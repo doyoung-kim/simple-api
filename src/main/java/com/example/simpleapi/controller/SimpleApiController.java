@@ -21,7 +21,6 @@ public class SimpleApiController {
 		log.info("==========simple-api home()");
 		
 		return "hello world";
-		
 	}
 	@GetMapping("/simple")
 	public List<Simple> listSimple(){
